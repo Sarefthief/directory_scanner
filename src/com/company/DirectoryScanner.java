@@ -1,5 +1,7 @@
 package com.company;
 import java.io.File;
+import java.util.Scanner;
+
 import org.apache.commons.io.FileUtils;
 
 public class DirectoryScanner
@@ -21,5 +23,14 @@ public class DirectoryScanner
                 System.out.println("Name: " + listOfFiles[i].getName() + "\t\t Size: " + size + "MB " + "\t\t Directory: false");
             }
         }
-}
+    }
+
+    public static void main(String[] args)
+    {
+        DirectoryScanner dirScan = new DirectoryScanner();
+        Scanner directory = new Scanner(System.in);
+        System.out.print("Full path to the directory: ");
+        String path = directory.nextLine();
+        dirScan.scan(path);
+    }
 }
