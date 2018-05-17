@@ -28,8 +28,14 @@ public class DirectoryScanner
     {
         DirectoryScanner dirScan = new DirectoryScanner();
         Scanner input = new Scanner(System.in);
-        System.out.print("Full path to the directory: ");
-        String path = input.nextLine();
-        dirScan.scan(path);
+        while (true){
+            System.out.print("Full path to the directory: ");
+            try {
+                String path = input.nextLine();
+                dirScan.scan(path);
+            } catch (NullPointerException e) {
+                System.out.println("Wrong path. Enter a new one by following the example: \"C:\\path\\to\\your\\directory\" ");
+            }
+        }
     }
 }
