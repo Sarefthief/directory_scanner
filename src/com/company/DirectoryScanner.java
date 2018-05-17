@@ -1,14 +1,13 @@
 package com.company;
 import java.io.File;
 import java.util.Scanner;
-
 import org.apache.commons.io.FileUtils;
 
 public class DirectoryScanner
 {
     public void scan(String path)
     {
-        double size = 0;
+        long size = 0;
         File folder = new File(path);
         File[] listOfFiles = folder.listFiles();
 
@@ -16,11 +15,11 @@ public class DirectoryScanner
             if (listOfFiles[i].isDirectory()){
                 size = FileUtils.sizeOfDirectory(listOfFiles[i]);
                 size /= 1024*1024;
-                System.out.println("Name: " + listOfFiles[i].getName() + "\t\t Size: " + size + "MB " + "\t\t Directory: true");
+                System.out.println("Name: " + listOfFiles[i].getName() + "\t\t Size: " + size + "MB" + "\t\t Directory: true");
             } else {
                 size = listOfFiles[i].length();
                 size /= 1024*1024;
-                System.out.println("Name: " + listOfFiles[i].getName() + "\t\t Size: " + size + "MB " + "\t\t Directory: false");
+                System.out.println("Name: " + listOfFiles[i].getName() + "\t\t Size: " + size + "MB" + "\t\t Directory: false");
             }
         }
     }
@@ -28,9 +27,9 @@ public class DirectoryScanner
     public static void main(String[] args)
     {
         DirectoryScanner dirScan = new DirectoryScanner();
-        Scanner directory = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.print("Full path to the directory: ");
-        String path = directory.nextLine();
+        String path = input.nextLine();
         dirScan.scan(path);
     }
 }
