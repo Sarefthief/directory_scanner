@@ -2,7 +2,10 @@
 java version: 10.0.1
 ### How to build and run jar file:
 1. Open cmd.exe
-2. Go to the C:\path\to\project\directory_scanner\scr\com\company
+2. Go to the class folder:
+```
+cd C:\path\to\project\directory_scanner\scr\com\company
+```
 3. Build jar file:
 ```
 javac DirectoryScanner.java
