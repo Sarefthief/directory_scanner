@@ -9,6 +9,7 @@ cd C:\path\to\project\directory_scanner\scr\com\company
 3. Build jar file:
 ```
 javac DirectoryScanner.java
+
 jar cfm DirectoryScanner.jar C:\path\to\project\directory_scanner\scr\META-INF\MANIFEST.MF DirectoryScanner.class
 ```
 4. Run jar file:
