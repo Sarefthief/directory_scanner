@@ -1,11 +1,14 @@
 # Directory scanner
 java version: 10.0.1
 ### How to build and run jar file:
-1. Install IntelliJ IDEA from https://www.jetbrains.com/idea/download
-2. Open project in IDEA
-3. Build -> Builds Artifacts -> directory_scanner:jar -> Build
-4. Open cmd.exe
-5. Run jar file:
+1. Open cmd.exe
+2. Go to the C:\path\to\project\directory_scanner\scr\com\company
+3. Build jar file:
+```
+javac DirectoryScanner.java
+jar cfm DirectoryScanner.jar C:\path\to\project\directory_scanner\scr\META-INF\MANIFEST.MF DirectoryScanner.class
+```
+4. Run jar file:
 ```
 java -jar C:\path\to\project\out\artifacts\directory_scanner_jar\directory_scanner.jar
 ```
