@@ -1,7 +1,8 @@
 # Directory scanner
 java version: JDK 10.0.1
 ### How to build and run jar file:
-1. Open cmd.exe
+
+1. Download and install java RE 10 from http://www.oracle.com/technetwork/java/javase/downloads/jre10-downloads-4417026.html
 2. Go to the class folder:
 ```
 cd path_to_directory\directory_scanner\scr\com\company
