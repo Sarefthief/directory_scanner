@@ -1,5 +1,5 @@
 # Directory scanner
-java version: 10.0.1
+java version: JDK 10.0.1
 ### How to build and run jar file:
 1. Open cmd.exe
 2. Go to the class folder:
