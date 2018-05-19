@@ -24,6 +24,7 @@ public class DirectoryScanner
             try {
                 String path = input.nextLine();
                 dirScan.scan(path);
+                break;
             } catch (NullPointerException e) {
                 System.out.println("Wrong path. Enter a new one by following the example: \"C:\\path\\to\\your\\directory\" ");
             }
