@@ -31,17 +31,19 @@ public class DirectoryScanner
     }
 }
 
-class Stream implements Runnable {
-
+class Stream implements Runnable
+{
     long size = 0;
     File file;
 
-    Stream(File file){
+    Stream(File file)
+    {
         this.file = file;
     }
 
     @Override
-    public void run() {
+    public void run()
+    {
         if (file.isDirectory()){
             size = FileUtils.sizeOfDirectory(file);
             size /= 1024*1024;
