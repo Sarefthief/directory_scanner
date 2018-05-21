@@ -1,8 +1,6 @@
 package com.company;
 import java.io.File;
 import java.util.Scanner;
-import java.lang.Thread;
-import java.util.WeakHashMap;
 
 public class DirectoryScanner
 {
