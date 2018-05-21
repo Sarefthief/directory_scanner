@@ -15,12 +15,15 @@ public class DirectoryScanner
         for (int i = 0; i < listOfFiles.length; i++){
             myThreads[i] = new DirectoryThread(listOfFiles[i]);
         }
-        for (DirectoryThread thread:myThreads ){
+        for (DirectoryThread thread: myThreads){
             try {
                 thread.t.join();
             } catch (InterruptedException e) {
                 System.out.println("Поток прерван");
             }
+        }
+        for (DirectoryThread thread: myThreads){
+            System.out.println(thread.result);
         }
     }
 
