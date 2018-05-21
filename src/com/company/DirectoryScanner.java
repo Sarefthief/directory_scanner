@@ -19,7 +19,7 @@ public class DirectoryScanner
             try {
                 thread.t.join();
             } catch (InterruptedException e) {
-                System.out.println("Поток прерван");
+                System.out.println("Thread is interrupted");
             }
         }
         for (DirectoryThread thread: myThreads){

@@ -14,7 +14,7 @@ public class DirectoryThread implements Runnable
     DirectoryThread(File file)
     {
         this.file = file;
-        t = new Thread ( this);
+        t = new Thread (this);
         t.start() ;
     }
 
