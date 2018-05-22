@@ -26,14 +26,10 @@ public class DirectoryThread implements Runnable
         fileInfo.setName(file.getName());
         if (file.isDirectory()){
             fileInfo.setDirStatus(true);
-            long size = FileUtils.sizeOfDirectory(file);
-            size /= 1024*1024;
-            fileInfo.setSize(size);
+            fileInfo.setSize(FileUtils.sizeOfDirectory(file)/(1024*1024));
         } else {
             fileInfo.setDirStatus(false);
-            long size = file.length();
-            size /= 1024*1024;
-            fileInfo.setSize(size);
+            fileInfo.setSize(file.length()/(1024*1024));
         }
     }
 }
