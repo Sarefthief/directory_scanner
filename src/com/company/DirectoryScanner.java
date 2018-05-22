@@ -7,13 +7,13 @@ public class DirectoryScanner
     {
         File folder = new File(path);
         File[] listOfFiles  = folder.listFiles();
-        DirectoryThread[] myFiles = new DirectoryThread[listOfFiles.length];
+        DirectoryThread[] directoryThreads = new DirectoryThread[listOfFiles.length];
         FileInfo[] filesInfo = new FileInfo[listOfFiles.length];
 
         for (int i = 0; i < listOfFiles.length; i++){
-            myFiles[i] = new DirectoryThread(listOfFiles[i]);  //создаем потоки для каждого файла в директории
+            directoryThreads[i] = new DirectoryThread(listOfFiles[i]);  //создаем потоки для каждого файла в директории
         }
-        for (DirectoryThread thread: myFiles){
+        for (DirectoryThread thread: directoryThreads){
             try {
                 thread.t.join();    //главный поток ждет все побочные
             } catch (InterruptedException e) {
@@ -21,7 +21,7 @@ public class DirectoryScanner
             }
         }
         for (int i = 0; i < filesInfo.length; i++){
-            filesInfo[i] = myFiles[i].getFileInfo();
+            filesInfo[i] = directoryThreads[i].getFileInfo();
         }
         return filesInfo;
     }
