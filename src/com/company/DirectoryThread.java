@@ -23,11 +23,11 @@ public class DirectoryThread implements Runnable
     {
         long size = 0;
         File[] fileList = file.listFiles();
-        for (int i = 0; i < fileList.length; i++) {
-            if (fileList[i].isDirectory()) {
-                size += getFolderSize(fileList[i]);
+        for (File fileCounter: fileList) {
+            if (fileCounter.isDirectory()) {
+                size += getFolderSize(fileCounter);
             } else {
-                size += fileList[i].length();
+                size += fileCounter.length();
             }
         }
         return size;
