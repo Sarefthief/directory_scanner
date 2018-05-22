@@ -6,8 +6,6 @@ public class DirectoryThread implements Runnable
 {
     Thread t;
     private File file;
-    private String name;
-    private boolean isDir;
     private FileInfo fileInfo = new FileInfo();
 
     DirectoryThread(File file)
