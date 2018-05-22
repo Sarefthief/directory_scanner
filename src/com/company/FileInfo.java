@@ -1,34 +1,38 @@
 package com.company;
-import java.io.File;
-import org.apache.commons.io.FileUtils;
 
-public class FileInfo implements Runnable
+public class FileInfo
 {
-    Thread t;
-    File file;
-    String name;
-    long size;
-    boolean isDir;
+    private String name;
+    private long size;
+    private boolean dirStatus;
 
-    FileInfo(File file)
+    public String getName()
     {
-        this.file = file;
-        t = new Thread (this);
-        t.start() ;
+        return name;
     }
 
-    @Override
-    public void run()
+    public long getSize()
     {
-        name = file.getName();
-        if (file.isDirectory()){
-            isDir = true;
-            size = FileUtils.sizeOfDirectory(file);
-            size /= 1024*1024;
-        } else {
-            isDir = false;
-            size = file.length();
-            size /= 1024*1024;
-        }
+        return size;
+    }
+
+    public boolean getDirStatus()
+    {
+        return dirStatus;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public void setSize(long size)
+    {
+        this.size = size;
+    }
+
+    public void setDirStatus(boolean dirStatus)
+    {
+        this.dirStatus = dirStatus;
     }
 }

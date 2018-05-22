@@ -7,15 +7,18 @@ public class DirectoryScannerApp
     {
         DirectoryScanner dirScan = new DirectoryScanner();
         Scanner input = new Scanner(System.in);
+        FileInfo[] filesInfo;
 
-        while(true){
-            System.out.print("Full path to the directory: ");
-            try {
-                String path = input.nextLine();
-                dirScan.scan(path);
-            } catch (NullPointerException e) {
-                System.out.println("Wrong path. Enter a new one by following the example: \"C:\\path\\to\\your\\directory\" ");
+        System.out.print("Full path to the directory: ");
+        try {
+            String path = input.nextLine();
+            filesInfo = dirScan.scan(path);
+            for (FileInfo file: filesInfo ){
+                System.out.println("Name: " + file.getName() + "\t\t Size: " + file.getSize() + "MB" + "\t\t Directory: " + file.getDirStatus());
             }
+        } catch (NullPointerException e) {
+            System.out.println("Wrong path. Enter a new one by following the example: \"C:\\path\\to\\your\\directory\" ");
         }
     }
 }
+
