@@ -14,7 +14,7 @@ public class DirectoryScanner
         }
         for (FileInfo thread: myFiles){
             try {
-                thread.t.join();    //создаем потоки для каждого файла в директории
+                thread.t.join();    //главный поток ждет все побочные
             } catch (InterruptedException e) {
                 System.out.println("Thread is interrupted");
             }
