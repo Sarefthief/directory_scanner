@@ -23,6 +23,7 @@ public class DirectoryScanner
         for (int i = 0; i < filesInfo.length; i++){
             filesInfo[i] = directoryThreads[i].getFileInfo();
         }
+
         return filesInfo;
     }
 }
