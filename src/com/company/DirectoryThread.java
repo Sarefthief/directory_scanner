@@ -1,6 +1,5 @@
 package com.company;
 import java.io.File;
-import org.apache.commons.io.FileUtils;
 
 public class DirectoryThread implements Runnable
 {
@@ -20,13 +19,27 @@ public class DirectoryThread implements Runnable
         return fileInfo;
     }
 
+    public long getFolderSize(File file)
+    {
+        long size = 0;
+        File[] fileList = file.listFiles();
+        for (int i = 0; i < fileList.length; i++) {
+            if (fileList[i].isDirectory()) {
+                size += getFolderSize(fileList[i]);
+            } else {
+                size += fileList[i].length();
+            }
+        }
+        return size;
+    }
+
     @Override
     public void run()
     {
         fileInfo.setName(file.getName());
         if (file.isDirectory()){
             fileInfo.setDirStatus(true);
-            fileInfo.setSize(FileUtils.sizeOfDirectory(file)/(1024*1024));
+            fileInfo.setSize(getFolderSize(file)/(1024*1024));
         } else {
             fileInfo.setDirStatus(false);
             fileInfo.setSize(file.length()/(1024*1024));
