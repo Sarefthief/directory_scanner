@@ -1,43 +1,26 @@
 package com.company;
 import java.io.File;
-import java.util.Scanner;
 
 public class DirectoryScanner
 {
-    private void scan(String path)
+    public void scan(String path)
     {
         File folder = new File(path);
         File[] listOfFiles  = folder.listFiles();
-        DirectoryThread[] myThreads = new DirectoryThread[listOfFiles.length];
+        FileInfo[] myFiles = new FileInfo[listOfFiles.length];
 
         for (int i = 0; i < listOfFiles.length; i++){
-            myThreads[i] = new DirectoryThread(listOfFiles[i]);
+            myFiles[i] = new FileInfo(listOfFiles[i]);  //создаем потоки для каждого файла в директории
         }
-        for (DirectoryThread thread: myThreads){
+        for (FileInfo thread: myFiles){
             try {
-                thread.t.join();
+                thread.t.join();    //создаем потоки для каждого файла в директории
             } catch (InterruptedException e) {
                 System.out.println("Thread is interrupted");
             }
         }
-        for (DirectoryThread thread: myThreads){
-            System.out.println(thread.result);
-        }
-    }
-
-    public static void main(String[] args)
-    {
-        DirectoryScanner dirScan = new DirectoryScanner();
-        Scanner input = new Scanner(System.in);
-
-        while(true){
-            System.out.print("Full path to the directory: ");
-            try {
-                String path = input.nextLine();
-                dirScan.scan(path);
-            } catch (NullPointerException e) {
-                System.out.println("Wrong path. Enter a new one by following the example: \"C:\\path\\to\\your\\directory\" ");
-            }
+        for (FileInfo file: myFiles){
+            System.out.println("Name: " + file.name + "\t\t Size: " + file.size + "MB" + "\t\t Directory: " + file.isDir);
         }
     }
 }

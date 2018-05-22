@@ -2,15 +2,15 @@ package com.company;
 import java.io.File;
 import org.apache.commons.io.FileUtils;
 
-
-public class DirectoryThread implements Runnable
+public class FileInfo implements Runnable
 {
     Thread t;
     File file;
-    long size = 0;
-    String result;
+    String name;
+    long size;
+    boolean isDir;
 
-    DirectoryThread(File file)
+    FileInfo(File file)
     {
         this.file = file;
         t = new Thread (this);
@@ -20,15 +20,15 @@ public class DirectoryThread implements Runnable
     @Override
     public void run()
     {
+        name = file.getName();
         if (file.isDirectory()){
+            isDir = true;
             size = FileUtils.sizeOfDirectory(file);
             size /= 1024*1024;
-            result = "Name: " + file.getName() + "\t\t Size: " + size + "MB" + "\t\t Directory: true";
         } else {
+            isDir = false;
             size = file.length();
             size /= 1024*1024;
-            result = "Name: " + file.getName() + "\t\t Size: " + size + "MB" + "\t\t Directory: false";
         }
-
     }
 }
