@@ -1,4 +1,5 @@
 package com.company;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DirectoryScannerApp
@@ -7,13 +8,13 @@ public class DirectoryScannerApp
     {
         DirectoryScanner dirScan = new DirectoryScanner();
         Scanner input = new Scanner(System.in);
-        FileInfo[] filesInfo;
+        ArrayList<FileInfo> filesInfo;
 
         System.out.print("Full path to the directory: ");
         try {
             String path = input.nextLine();
             filesInfo = dirScan.scan(path);
-            for (FileInfo file: filesInfo ){
+            for (FileInfo file: filesInfo){
                 System.out.println("Name: " + file.getName() + "\t\t Size: " + file.getSize() + "MB" + "\t\t Directory: " + file.getDirStatus());
             }
         } catch (NullPointerException e) {

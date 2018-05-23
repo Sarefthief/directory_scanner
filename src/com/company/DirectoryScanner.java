@@ -1,17 +1,18 @@
 package com.company;
 import java.io.File;
+import java.util.ArrayList;
 
 public class DirectoryScanner
 {
-    public FileInfo[] scan(String path)
+    public ArrayList<FileInfo> scan(String path)
     {
         File folder = new File(path);
         File[] listOfFiles  = folder.listFiles();
-        DirectoryThread[] directoryThreads = new DirectoryThread[listOfFiles.length];
-        FileInfo[] filesInfo = new FileInfo[listOfFiles.length];
+        ArrayList<DirectoryThread> directoryThreads = new ArrayList<>();
+        ArrayList<FileInfo> filesInfo = new ArrayList<>();
 
-        for (int i = 0; i < listOfFiles.length; i++){
-            directoryThreads[i] = new DirectoryThread(listOfFiles[i]);  //создаем потоки для каждого файла в директории
+        for (File file: listOfFiles){
+            directoryThreads.add(new DirectoryThread(file));  //создаем потоки для каждого файла в директории
         }
         for (DirectoryThread thread: directoryThreads){
             try {
@@ -20,8 +21,8 @@ public class DirectoryScanner
                 System.out.println("Thread is interrupted");
             }
         }
-        for (int i = 0; i < filesInfo.length; i++){
-            filesInfo[i] = directoryThreads[i].getFileInfo();
+        for (DirectoryThread thread: directoryThreads){
+            filesInfo.add(thread.getFileInfo());
         }
 
         return filesInfo;
