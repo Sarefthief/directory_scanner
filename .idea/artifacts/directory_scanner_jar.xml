@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="directory_scanner:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/directory_scanner_jar</output-path>
-    <root id="archive" name="directory_scanner.jar">
-      <element id="module-output" name="directory_scanner" />
-      <element id="extracted-dir" path="$USER_HOME$/Desktop/Новая папка (3)/commons-io-2.6/commons-io-2.6.jar" path-in-jar="/" />
-    </root>
-  </artifact>
-</component>
