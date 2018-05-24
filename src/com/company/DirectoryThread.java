@@ -3,15 +3,14 @@ import java.io.File;
 
 public class DirectoryThread implements Runnable
 {
-    Thread t;
+
     private File file;
     private FileInfo fileInfo = new FileInfo();
 
     DirectoryThread(File file)
     {
         this.file = file;
-        t = new Thread (this);
-        t.start() ;
+        Thread t = new Thread (this);
     }
 
     public FileInfo getFileInfo()
