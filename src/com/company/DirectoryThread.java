@@ -7,17 +7,27 @@ public class DirectoryThread implements Runnable
     private File file;
     private FileInfo fileInfo = new FileInfo();
 
+    /**
+     * @param file file object
+     */
     DirectoryThread(File file)
     {
         this.file = file;
         Thread t = new Thread (this);
     }
 
+    /**
+     * @return fileInfo object
+     */
     public FileInfo getFileInfo()
     {
         return fileInfo;
     }
 
+    /**
+     * @param file file object
+     * @return size of the file or directory in bytes
+     */
     public long getFolderSize(File file)
     {
         long size = 0;
@@ -31,6 +41,7 @@ public class DirectoryThread implements Runnable
         }
         return size;
     }
+
 
     @Override
     public void run()

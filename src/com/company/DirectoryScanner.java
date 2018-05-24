@@ -6,6 +6,10 @@ import java.util.concurrent.Executors;
 
 public class DirectoryScanner
 {
+    /**
+     * @param path full path to directory
+     * @return array of fileInfo objects
+     */
     public ArrayList<FileInfo> scan(String path)
     {
         File folder = new File(path);
@@ -20,6 +24,7 @@ public class DirectoryScanner
             pool.execute(a);
         }
         pool.shutdown();
+
         while (!pool.isTerminated()) {   }
         for (DirectoryThread thread: directoryThreads){
             filesInfo.add(thread.getFileInfo());
