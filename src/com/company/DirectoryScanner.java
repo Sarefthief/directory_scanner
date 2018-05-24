@@ -3,6 +3,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class DirectoryScanner
 {
@@ -24,8 +25,11 @@ public class DirectoryScanner
             pool.execute(a);
         }
         pool.shutdown();
-
-        while (!pool.isTerminated()) {   }
+        try{
+            pool.awaitTermination(1, TimeUnit.MINUTES);
+        } catch(InterruptedException e) {
+            System.out.println("Thread pool is terminated");
+        }
         for (DirectoryThread thread: directoryThreads){
             filesInfo.add(thread.getFileInfo());
         }

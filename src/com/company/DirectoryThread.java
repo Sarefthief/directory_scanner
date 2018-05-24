@@ -42,7 +42,6 @@ public class DirectoryThread implements Runnable
         return size;
     }
 
-
     @Override
     public void run()
     {
